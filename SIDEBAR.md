@@ -6,6 +6,6 @@
 - Developed by Others
   - [A Rainbow Spider Based on Physics Engine](/demos/spider-web/)
   - [Lava Effect](/demos/lava-effect/)
-  - [Random Line with Note](/demos/mta-me/)
+  - [Simulated Train Line](/demos/mta-me/)
   - [Flappy Trex on Chrome](/demos/flappy-trex/)
   - [Snowflake Effect](/demos/snowflake/)
