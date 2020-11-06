@@ -37,6 +37,7 @@ h1:first-child {
 aside {
   width: 300px;
   height: 100%;
+  background: #fff;
   border-right: #ddd 1px solid;
   overflow: auto;
 }
@@ -50,8 +51,25 @@ aside::-webkit-scrollbar-thumb {
 }
 
 menu {
+  position: fixed;
+  z-index: 10;
+  left: 0;
+  bottom: 0;
   margin: 0;
   padding: 0;
+  width: 40px;
+  height: 40px;
+  background: #fff;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+menu svg {
+  fill: #666;
+  width: 20px;
+  height: 20px;
 }
 
 main {
@@ -110,4 +128,16 @@ ul p {
 
 li {
   margin: 8px 0;
+}
+
+@media (max-width: 800px) {
+  aside {
+    position: fixed;
+    z-index: 9;
+    left: -300px;
+    transition: left .3s;
+  }
+  menu {
+    display: flex;
+  }
 }

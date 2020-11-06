@@ -1,11 +1,22 @@
 document.addEventListener('DOMContentLoaded', async function(e) {
+    const menu = document.querySelector('menu')
+    menu.addEventListener('click', function() {
+        if (sidebar.isOpen) {
+            sidebar.isOpen = false
+            sidebar.style.left = '-300px'
+        } else {
+            sidebar.isOpen = true
+            sidebar.style.left = 0
+        }
+    })
+
     let res = await fetch('/README.md')
     const main = document.querySelector('main')
     main.innerHTML = marked(await res.text())
 
     res = await fetch('/SIDEBAR.md')
-    const menu = document.querySelector('menu')
-    menu.innerHTML = marked(await res.text())
+    const nav = document.querySelector('nav')
+    nav.innerHTML = marked(await res.text())
 
     const sidebar = document.querySelector('aside')
     const links = sidebar.querySelectorAll('a')
