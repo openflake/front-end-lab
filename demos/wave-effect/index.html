@@ -1,0 +1,99 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+  <title>波浪效果</title>
+  <style>
+  body { margin: 0; background: #DAE7EA; height: 100vh; line-height: 1.8; font-size: 15px; font-family: "PingFang SC", "Microsoft YaHei", "Heiti SC", "Hiragino Sans GB", "WenQuanYi Micro Hei", "Helvetica Neue", Helvetica, Arial, sans-serif; }
+  main { height: 100%; display: flex; flex-direction: column; overflow: hidden; }
+  header { flex: 2; }
+  footer { flex: 1; background: #08303A; }
+  footer { display: flex; align-items: center; justify-content: center; }
+  footer>b { width:30px;height:30px;color:#08303A;background: #174753; display: flex;align-items: center;justify-content: center;border-radius: 5px; margin: 5px; }
+  </style>
+</head>
+<body>
+
+<main>
+  <header></header>
+  <div id='wave-box'></div>
+  <footer>
+    <b>Z</b><b>R</b><b>E</b><b>G</b>
+  </footer>
+</main>
+
+<script>
+wave('wave-box', 100)
+
+function wave(id, height) {
+  let el = document.getElementById(id)
+  el.style.position = 'relative'
+  el.style.height = height + 'px'
+
+  let c1 = createWave({
+    el: el, color: '#4691A3', speed: 30, width: 3000, height: 15, count: 6, y: height,
+  })
+  let c2 = createWave({
+    el: el, color: '#08303A', speed: 80, width: 3000, height: 30, count: 4, y: height - 20,
+  })
+
+  window.onresize = resize
+  resize()
+
+  function resize() {
+    c1.width = window.innerWidth
+    c2.width = window.innerWidth
+  }
+
+  function createWave(option) {
+    option = option || {}
+    let el = option.el
+    let bgColor = option.color
+    let speed = option.speed || 30
+    let waveWidth = option.width || 3000
+    let waveHeight = option.height || 15
+    let waveCount = option.count || 6
+    let waveY = option.y || 100
+    let offset = 0
+    let startX = -1000
+    let startY = height + height / 2
+    let d2 = waveWidth / waveCount
+    let d = d2 / 2, hd = d / 2
+    let canvas = document.createElement('canvas')
+    canvas.style.position = 'absolute'
+    canvas.height = height
+    el.appendChild(canvas)
+    let ctx = canvas.getContext("2d")
+
+    function tick() {
+      offset -= 5
+      if (-1 * offset === d2) offset = 0
+
+      let offsetY = startY - waveY
+      ctx.clearRect(0, 0, canvas.width, canvas.height)
+      ctx.fillStyle = bgColor
+      ctx.beginPath()
+      ctx.moveTo(startX - offset, offsetY)
+
+      for (var i = 0; i < waveCount; i++) {
+        let dx = i * d2
+        let offsetX = dx + startX - offset
+        ctx.quadraticCurveTo(offsetX + hd, offsetY + waveHeight, offsetX + d, offsetY)
+        ctx.quadraticCurveTo(offsetX + hd + d, offsetY - waveHeight, offsetX + d2, offsetY)
+      }
+
+      ctx.lineTo(startX + waveWidth, waveWidth)
+      ctx.lineTo(startX, waveWidth)
+      ctx.fill()
+      setTimeout(tick, speed)
+    }
+
+    tick()
+    return canvas
+  }
+}
+</script>
+</body>
+</html>

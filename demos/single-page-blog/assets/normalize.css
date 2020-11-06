@@ -1,0 +1,56 @@
+/* ----------------------------------------------
+ * Normalize
+ * ------------------------------------------- */
+
+*, *:before, *:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+article, aside, details, footer, header, main, menu, nav, section, summary {
+  display: block;
+}
+
+ul, ol, nav, menu {
+  margin: 0;
+  padding: 0;
+}
+
+button, input, select, textarea {
+  margin: 0;
+  font: inherit;
+  vertical-align: middle;
+  -webkit-appearance: none;
+}
+
+button, label {
+  outline: none;
+  overflow: visible;
+  cursor: pointer;
+}
+
+button[disabled], input[disabled] {
+  cursor: default;
+}
+
+img {
+  border: 0;
+  display: inline-block;
+  vertical-align: middle;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+a:active, a:hover {
+  outline: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+}
