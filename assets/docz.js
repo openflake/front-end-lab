@@ -13,6 +13,12 @@ document.addEventListener('DOMContentLoaded', async function(e) {
         link.addEventListener('click', async function(e) {
             e.preventDefault()
 
+            const loading = new Image()
+            loading.src = '/assets/loader.svg'
+            loading.className = 'loading'
+            main.innerHTML = ''
+            main.appendChild(loading)
+
             let url = this.getAttribute('href')
             if (url.endsWith('.md')) {
                 res = await fetch(url)
@@ -23,8 +29,18 @@ document.addEventListener('DOMContentLoaded', async function(e) {
             if (url.endsWith('/')) {
                 url += 'index.html'
             }
-            main.innerHTML = `<iframe src="${url}"></iframe>`
-            main.classList.add('with-frame')
+
+            let iframe = document.querySelector('iframe')
+            if (!iframe) {
+                iframe = document.createElement('iframe')
+                main.appendChild(iframe)
+                main.classList.add('with-frame')
+            }
+
+            iframe.src = url
+            iframe.onload = function() {
+                loading.remove()
+            }
         })
     })
 })

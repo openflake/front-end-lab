@@ -55,6 +55,7 @@ menu {
 }
 
 main {
+  position: relative;
   flex: 1;
   padding: 5%;
   overflow: auto;
@@ -63,6 +64,14 @@ main {
 main.with-frame {
   padding: 0;
   overflow: initial;
+}
+
+.loading {
+  position: absolute;
+  height: 30px;
+  left: 50%;
+  top: 50%;
+  transform: translate3d(-50%, -50%, 0);
 }
 
 iframe {

@@ -1,4 +1,4 @@
-- Developed by Seatwork
+- Developed by Openflake
   - [Simple Wave Effect](/demos/wave-effect/)
   - [Starry Sky](/demos/starry-sky/)
   - [A Experimental Single Page Blog](/demos/single-page-blog/)
