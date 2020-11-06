@@ -50,6 +50,10 @@ aside::-webkit-scrollbar-thumb {
   background-color: #eee;
 }
 
+nav {
+  margin: 30px;
+}
+
 menu {
   position: fixed;
   z-index: 10;
@@ -113,11 +117,7 @@ iframe {
 }
 
 ul {
-  margin: 30px 20px;
-}
-
-ul ul {
-  margin: 0 0 0 -20px;
+  padding-left: 20px;
 }
 
 ul p {

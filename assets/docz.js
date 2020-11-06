@@ -1,6 +1,10 @@
-document.addEventListener('DOMContentLoaded', async function(e) {
+document.addEventListener('DOMContentLoaded', function(e) {
+    const sidebar = document.querySelector('aside')
+    const nav = document.querySelector('nav')
     const menu = document.querySelector('menu')
-    menu.addEventListener('click', function() {
+    const main = document.querySelector('main')
+
+    function toggleSidebar() {
         if (sidebar.isOpen) {
             sidebar.isOpen = false
             sidebar.style.left = '-300px'
@@ -8,50 +12,59 @@ document.addEventListener('DOMContentLoaded', async function(e) {
             sidebar.isOpen = true
             sidebar.style.left = 0
         }
-    })
+    }
 
-    let res = await fetch('/README.md')
-    const main = document.querySelector('main')
-    main.innerHTML = marked(await res.text())
+    function createFrame() {
+        let iframe = document.querySelector('iframe')
+        if (!iframe) {
+            iframe = document.createElement('iframe')
+            main.classList.add('with-frame')
+            main.appendChild(iframe)
+        }
+        return iframe
+    }
 
-    res = await fetch('/SIDEBAR.md')
-    const nav = document.querySelector('nav')
-    nav.innerHTML = marked(await res.text())
+    function createLoader() {
+        const loader = new Image()
+        loader.className = 'loading'
+        loader.src = '/assets/loader.svg'
+        main.innerHTML = ''
+        main.appendChild(loader)
+        return loader
+    }
 
-    const sidebar = document.querySelector('aside')
-    const links = sidebar.querySelectorAll('a')
-    links.forEach(link => {
-        link.addEventListener('click', async function(e) {
-            e.preventDefault()
+    function addLinksClick() {
+        const links = sidebar.querySelectorAll('a')
+        links.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault()
+                toggleSidebar()
 
-            const loading = new Image()
-            loading.src = '/assets/loader.svg'
-            loading.className = 'loading'
-            main.innerHTML = ''
-            main.appendChild(loading)
-
-            let url = this.getAttribute('href')
-            if (url.endsWith('.md')) {
-                res = await fetch(url)
-                main.innerHTML = marked(await res.text())
-                main.classList.remove('with-frame')
-                return
-            }
-            if (url.endsWith('/')) {
-                url += 'index.html'
-            }
-
-            let iframe = document.querySelector('iframe')
-            if (!iframe) {
-                iframe = document.createElement('iframe')
-                main.appendChild(iframe)
-                main.classList.add('with-frame')
-            }
-
-            iframe.src = url
-            iframe.onload = function() {
-                loading.remove()
-            }
+                let url = this.getAttribute('href')
+                if (url.endsWith('/')) {
+                    url += 'index.html'
+                }
+                const loader = createLoader()
+                if (url.endsWith('.md')) {
+                    fetch(url).then(res => res.text()).then(res => {
+                        main.innerHTML = marked(res)
+                        main.classList.remove('with-frame')
+                    })
+                } else {
+                    const frame = createFrame()
+                    frame.src = url
+                    frame.onload = () => loader.remove()
+                }
+            })
         })
+    }
+
+    menu.addEventListener('click', toggleSidebar)
+    fetch('/README.md').then(res => res.text()).then(res => {
+        main.innerHTML = marked(res)
+    })
+    fetch('/SIDEBAR.md').then(res => res.text()).then(res => {
+        nav.innerHTML = marked(res)
+        addLinksClick()
     })
 })
