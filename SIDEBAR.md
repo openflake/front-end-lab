@@ -1,11 +1,21 @@
-- Developed by Openflake
-  - [Simple Wave Effect](/demos/wave-effect/)
-  - [Starry Sky](/demos/starry-sky/)
-  - [A Experimental Single Page Blog](/demos/single-page-blog/)
+- Developments
+  - [Simple Wave Effect](/demos/dev/wave-effect/)
+  - [Starry Sky](/demos/dev/starry-sky/)
+  - [A Experimental Single Page Blog](/demos/dev/single-page-blog/)
 
-- Developed by Others
-  - [A Rainbow Spider Based on Physics Engine](/demos/spider-web/)
-  - [Lava Effect](/demos/lava-effect/)
-  - [Simulated Train Line](/demos/mta-me/)
-  - [Flappy Trex on Chrome](/demos/flappy-trex/)
-  - [Snowflake Effect](/demos/snowflake/)
+- Favorites
+  - [A Rainbow Spider Based on Physics Engine](/demos/fav/spider-web/)
+  - [Digital Block Clock](/demos/fav/digital-block-clock/)
+  - [Lava Effect](/demos/fav/lava-effect/)
+  - [Attract and Repulse Particles](/demos/fav/attract-and-repulse-particles/)
+  - [Upstream Lines](/demos/fav/upstream-lines/)
+  - [Simulated Train Line](/demos/fav/simulated-train-line/)
+  - [Simulated Snowflake](/demos/fav/simulated-snowflake/)
+  - [Flappy Trex on Chrome](/demos/fav/flappy-trex/)
+  - [Typing Game](/demos/fav/typing-game/)
+
+- 404 Pages
+  - [Lost in Galaxy](demos/404/lost-in-galaxy/)
+  - [Lost in Island](demos/404/lost-in-island/)
+  - [Lost in Particles](demos/404/lost-in-particles/)
+  - [Lost in Word Puzzle](demos/404/lost-in-word-puzzle/)

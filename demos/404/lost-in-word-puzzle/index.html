@@ -1,0 +1,97 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>404: Page Not Found</title>
+  <style>
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    height: 100vh;
+  }
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0;
+    padding: 0;
+    width: 416px;
+  }
+  ul li {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    margin: 1px;
+    background: #aaa;
+    color: #fff;
+    list-style: none;
+    text-transform: uppercase;
+    transition: all 0.7s ease;
+    -moz-transition: all 0.7s ease;
+    -webkit-transition: all 0.7s ease;
+    -o-transition: all 0.7s ease;
+  }
+  ul li.selected {
+    background: #ec5453;
+    font-weight: 700;
+  }
+  </style>
+</head>
+
+<body>
+<ul>
+  <li>k</li><li>v</li><li>n</li><li>z</li><li>i</li><li>x</li><li>m</li><li>e</li>
+  <li>t</li><li>a</li><li>x</li><li>l</li><li class="d4">4</li><li class="d0">0</li><li class="d42">4</li><li>y</li>
+  <li>y</li><li>w</li><li>v</li><li>b</li><li>o</li><li>q</li><li>d</li><li>y</li>
+  <li>p</li><li>a</li><li class="p">p</li><li class="a">a</li><li class="g">g</li><li class="e">e</li><li>v</li><li>j</li>
+  <li>a</li><li class="n">n</li><li class="o">o</li><li class="t">t</li><li>s</li><li>c</li><li>e</li><li>w</li>
+  <li>v</li><li>x</li><li>e</li><li>p</li><li>c</li><li>f</li><li>h</li><li>q</li>
+  <li>e</li><li>s</li><li class="f">f</li><li class="o2">o</li><li class="u">u</li><li class="n2">n</li><li class="d">d</li><li>w</li>
+  <li>q</li><li>v</li><li>o</li><li>s</li><li>m</li><li>v</li><li>f</li><li>u</li>
+</ul>
+
+<script >
+function $(s) {
+  return document.querySelector(s)
+}
+function delay(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+(async function() {
+  await delay(500)
+  $('.d4').classList.add('selected')
+  await delay(500)
+  $('.d0').classList.add('selected')
+  await delay(500)
+  $('.d42').classList.add('selected')
+  await delay(500)
+  $('.p').classList.add('selected')
+  await delay(500)
+  $('.a').classList.add('selected')
+  await delay(500)
+  $('.g').classList.add('selected')
+  await delay(500)
+  $('.e').classList.add('selected')
+  await delay(500)
+  $('.n').classList.add('selected')
+  await delay(500)
+  $('.o').classList.add('selected')
+  await delay(500)
+  $('.t').classList.add('selected')
+  await delay(500)
+  $('.f').classList.add('selected')
+  await delay(500)
+  $('.o2').classList.add('selected')
+  await delay(500)
+  $('.u').classList.add('selected')
+  await delay(500)
+  $('.n2').classList.add('selected')
+  await delay(500)
+  $('.d').classList.add('selected')
+})()
+</script>
+</body>
+</html>
