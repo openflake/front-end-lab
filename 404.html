@@ -64,7 +64,9 @@ new Typed('#code', {
   strings: coding,
   onComplete() {
     document.body.style.animation = 'breathe 2s 1s 3'
-    document.body.onanimationend = () => location.href = '/'
+    document.body.onanimationend = () => {
+      if (self === top) location.href = '/'
+    }
   }
 })
 </script>

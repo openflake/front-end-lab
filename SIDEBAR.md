@@ -15,7 +15,8 @@
   - [Typing Game](/demos/fav/typing-game/)
 
 - 404 Pages
-  - [Lost in Galaxy](demos/404/lost-in-galaxy/)
-  - [Lost in Island](demos/404/lost-in-island/)
-  - [Lost in Particles](demos/404/lost-in-particles/)
-  - [Lost in Word Puzzle](demos/404/lost-in-word-puzzle/)
+  - [Lost in Galaxy](/demos/404/lost-in-galaxy/)
+  - [Lost in Island](/demos/404/lost-in-island/)
+  - [Lost in Particles](/demos/404/lost-in-particles/)
+  - [Lost in Word Puzzle](/demos/404/lost-in-word-puzzle/)
+  - [Lost in Coding](/404.html)
