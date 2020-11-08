@@ -1,106 +1,70 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
-  <link rel="icon" href="/assets/logo.png"/>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>404 - Page Not Found</title>
+  <link rel="icon" href="/assets/logo.png"/>
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11"></script>
   <style>
   @font-face {
-    font-family: Poppins;
-    src: local('Poppins Light'), local('Poppins-Light'), url(//cdn.unpkg.net/font/poppins-light.woff2) format('woff2')
+    font-family: Officecode;
+    src: local('Officecode'), local('Officecode'), url(https://cdn.unpkg.net/font/officecode.woff2) format('woff2')
   }
-  :root {
-    --main-color-hue: 217;
-    --main-color: hsla(var(--main-color-hue), 97%, 61%, 1);
-    --black: #333;
-    --red: #de5246;
-  }
-  html, html::after, html::before, body, body::after, body::before, head, head::after, head::before, style, style::after, style::before {
-    content: '';
-    box-sizing: border-box;
-    display: block;
-    margin: 0;
-    padding: 0;
-    height: 0;
-    font-family: Poppins;
-  }
-  style, head, head::after, html::after, html::before, body::after {
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    margin: auto;
-  }
-  html {
-    background: #f9f9f9;
-    text-align: center;
-  }
-  html::before {
-    content: 'Page not found';
-    color: var(--main-color);
-    height: 0;
-    line-height: 0;
-    font-size: 1.6rem;
-    transform: translatey(8rem);
-  }
-  html::after {
-    content: '4 4';
-    color: var(--main-color);
-    height: 0;
-    line-height: 0;
-    font-size: 7rem;
-    font-weight: 700;
-    letter-spacing: 2rem;
-    transform: translate(1rem, -5rem);
-  }
-  head {
-    margin: auto;
-    z-index: -1;
-    width: 5.1rem;
-    height: 5.1rem;
-    background: var(--main-color);
-    border-radius: 50%;
-    box-shadow: 0 0 0 2rem hsla(var(--main-color-hue), 97%, 61%, 0.1), 0 0 0 4rem hsla(var(--main-color-hue), 97%, 61%, 0.05), 0 0 0 6rem hsla(var(--main-color-hue), 97%, 61%, 0.025);
-    transform: translatey(-5rem);
-  }
-  head::after {
-    width: 1.1rem;
-    height: .5rem;
-    margin-bottom: 1.2rem;
-    border-radius: 4rem 4rem .5rem .5rem;
-    background: var(--red);
-    box-shadow: 0 -0.3rem 0 0.3rem var(--black);
-  }
-  style {
-    overflow: hidden;
-    color: transparent;
-    line-height: 0;
-    width: 5.1rem;
-    height: 2rem;
-    margin-top: .2rem;
-  }
-  style::before {
-    width: .3rem;
-    height: .3rem;
-    background: var(--black);
-    margin-top: 1.6rem;
-    margin-left: 1.6rem;
-    border-radius: 50%;
-    box-shadow: 0 0 0 0.3rem white, 1.4rem -0.2rem 0 var(--black), 1.5rem 0 0 0.3rem white;
+  body, pre {
+    font: 16px/1.6 Officecode, Consolas, Monaco, monospace;
   }
   body {
-    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
     height: 100vh;
-    overflow: hidden;
   }
-  body::after {
-    content: 'The page you are trying to reach doesn\'t exist.';
-    color: var(--black);
-    transform: translatey(10rem);
+  pre {
+    padding: 20px;
+    overflow: auto;
   }
-</style>
+  @-webkit-keyframes breathe {
+    50% {
+      background: #fde56b;
+    }
+    100% {
+      background: initial;
+    }
+  }
+  .cls { color: #16a05d; }
+  .attr { color: #4688f4; font-style:italic }
+  .method { color: #4688f4; }
+  .arg { color: orange; }
+  .num { color: #ec5e67; }
+  .str { color: #999; }
+  </style>
 </head>
-<body></body>
+
+<body>
+<pre><span id="code"></span></pre>
+</body>
 </html>
+
+<script>
+const coding = [
+`<span class="cls">module</span>.<span class="attr">exports</span> = (<span class="arg">req</span>, <span class="arg">res</span>) => {
+  <span class="arg">res</span>.<span class="method">setHeader</span>('<span class="str">Content-Type</span>', '<span class="str">text/plain</span>')
+  <span class="arg">res</span>.<span class="method">send</span>(<span class="num">404</span>, '<span class="str">Page not found</span>')
+`,
+`<span class="cls">module</span>.<span class="attr">exports</span> = (<span class="arg">req</span>, <span class="arg">res</span>) => {
+  <span class="arg">res</span>.<span class="method">setHeader</span>('<span class="str">Content-Type</span>', '<span class="str">text/plain</span>')
+  <span class="arg">res</span>.<span class="method">redirect</span>(<span class="num">308</span>, '<span class="str">https://lab.zerg.cc</span>')
+}`]
+new Typed('#code', {
+  typeSpeed: 20,
+  startDelay: 1000,
+  backDelay: 2000,
+  strings: coding,
+  onComplete() {
+    document.body.style.animation = 'breathe 2s 1s 3'
+    document.body.onanimationend = () => location.href = '/'
+  }
+})
+</script>
