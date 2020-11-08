@@ -1,6 +1,7 @@
 - Developments
   - [Simple Wave Effect](/demos/dev/wave-effect/)
   - [Starry Sky](/demos/dev/starry-sky/)
+  - [A Donut Clock](/demos/dev/donut-clock/)
   - [A Experimental Single Page Blog](/demos/dev/single-page-blog/)
 
 - Favorites

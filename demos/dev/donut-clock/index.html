@@ -1,0 +1,93 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1"/>
+  <title>Donut Clock</title>
+  <style>
+  body { display: flex; justify-content: center; align-items: center; margin: 0; height: 100vh; }
+  </style>
+</head>
+
+<body>
+<div id="container"></div>
+</body>
+</html>
+
+<script>
+class DonutClock {
+  constructor(selector, options) {
+    this.options = Object.assign({
+      size: 300,
+      donutWidth: 20,
+      donutSpacing: 10,
+      hourHandColor: '#44b549',
+      minuteHandColor: '#4688f4',
+      secondHandColor: '#db7093',
+      fontColor: '#db7093',
+      fontSize: '20px',
+      fontFamily: 'arial',
+    }, options)
+
+    const cvs = document.createElement('canvas')
+    cvs.width = this.options.size
+    cvs.height = this.options.size
+    document.querySelector(selector).appendChild(cvs)
+
+    this.ctx = cvs.getContext('2d')
+    this.ctx.lineWidth = this.options.donutWidth
+    this.ctx.font = `${this.options.fontSize} ${this.options.fontFamily}`
+    this.ctx.fillStyle = this.options.fontColor
+    this.ctx.textBaseline = 'middle'
+    this.ctx.textAlign = 'center'
+
+    this.startPos = 1.5 * Math.PI
+    this.endPos = 2 * Math.PI / 100
+    this.halfSize = this.options.size / 2
+    this.run()
+  }
+
+  run() {
+    requestAnimationFrame(() => this.run())
+    const date = new Date
+    let h = date.getHours()
+    let m = date.getMinutes()
+    let s = date.getSeconds()
+
+    // Calculate percentage to be drawn
+    var hp = 100 / 12 * (h % 12)
+    var mp = 100 / 60 * m
+    var sp = 100 / 60 * s
+
+    // Ensure double digits
+    h = h < 10 ? '0' + h : h
+    m = m < 10 ? '0' + m : m
+    s = s < 10 ? '0' + s : s
+
+    const opt = this.options
+    this.ctx.clearRect(0, 0, opt.size, opt.size)
+    this.ctx.fillText(h + ':' + m + ':' + s, this.halfSize, this.halfSize)
+    this.draw(this.halfSize - opt.donutWidth, sp, opt.secondHandColor)
+    this.draw(this.halfSize - opt.donutWidth*2 - opt.donutSpacing, mp, opt.minuteHandColor)
+    this.draw(this.halfSize - opt.donutWidth*3 - opt.donutSpacing*2, hp, opt.hourHandColor)
+  }
+
+  /**
+   * Draw percentage of a circle
+   *
+   * @param {number} r Radius
+   * @param {number} p Percentage of circle
+   * @param {string} c Stroke color
+   * @return void
+   */
+  draw(r, p, c) {
+    p = p || 100 // When time is '00' we show full circle
+    this.ctx.strokeStyle = c
+    this.ctx.beginPath()
+    this.ctx.arc(this.halfSize, this.halfSize, r, this.startPos, p * this.endPos + this.startPos, false)
+    this.ctx.stroke()
+  }
+}
+
+new DonutClock('#container')
+</script>
