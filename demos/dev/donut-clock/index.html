@@ -26,6 +26,7 @@ class DonutClock {
       secondHandColor: '#db7093',
       fontSize: '14px',
       fontFamily: 'sans-serif',
+      showText: true
     }, options)
 
     const cvs = document.createElement('canvas')
@@ -98,12 +99,14 @@ class DonutClock {
      * so, angle = arc length * 360 / 2πr
      * assign offset arc length = 10
      */
-    const angle = p / 100 * 360 - 90
-    const offsetAngle = 10 * (360 / (2 * Math.PI * r))
-    const x = o.x + r * Math.cos((angle + offsetAngle) * Math.PI / 180)
-    const y = o.y + r * Math.sin((angle + offsetAngle) * Math.PI / 180)
-    this.ctx.fillStyle = c
-    this.ctx.fillText(t, x, y)
+    if (this.options.showText === true) {
+      const angle = p / 100 * 360 - 90
+      const offsetAngle = 10 * (360 / (2 * Math.PI * r))
+      const x = o.x + r * Math.cos((angle + offsetAngle) * Math.PI / 180)
+      const y = o.y + r * Math.sin((angle + offsetAngle) * Math.PI / 180)
+      this.ctx.fillStyle = c
+      this.ctx.fillText(t, x, y)
+    }
   }
 }
 
