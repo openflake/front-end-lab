@@ -4,6 +4,7 @@
   - [A Experimental Single Page Blog](/demos/dev/single-page-blog/)
 
 - Favorites
+  - [Open Screen with Fingerprint](/demos/fav/open-with-fingerprint/)
   - [A Rainbow Spider Based on Physics Engine](/demos/fav/spider-web/)
   - [Digital Block Clock](/demos/fav/digital-block-clock/)
   - [Lava Effect](/demos/fav/lava-effect/)

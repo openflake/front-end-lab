@@ -1,0 +1,71 @@
+*, *:before, *:after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.fingerprint {
+  width: 200px;
+  cursor: pointer;
+}
+
+.fingerprint.bg {
+  background-image: url('fingerprint.svg');
+}
+
+.fprint-path {
+  fill: none;
+  stroke: white;
+  stroke-width: 2.5px;
+  stroke-linecap: round;
+  visibility: hidden;
+  transition: opacity 0.5s ease;
+  will-change: stroke-dashoffset, stroke-dasharray;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+}
+
+.fprint-path.pinkish {
+  stroke: #a94a8c;
+}
+
+.fprint-path.purplish {
+  stroke: #8742cc;
+}
+
+.fprint-ending-path {
+  fill: none;
+  stroke-width: 2.5px;
+  stroke-dasharray: 60 1000;
+  stroke-dashoffset: 61;
+  stroke-linecap: round;
+  will-change: stroke-dashoffset, stroke-dasharray, opacity;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  transition: stroke-dashoffset 1s ease, stroke-dasharray 0.5s linear, opacity 0.75s ease;
+}
+
+.fprint-ending-path.pinkish {
+  stroke: #a94a8c;
+}
+
+.fprint-ending-path.purplish {
+  stroke: #8742cc;
+}
+
+.fprint-ending-path.fadeout {
+  opacity: 0;
+}
+
+.fprint-ending-path.removed {
+  stroke-dashoffset: -130;
+  stroke-dasharray: 5 1000;
+}
