@@ -3,6 +3,7 @@
   - [Donut Clock](/demos/donut-clock/)
   - [Fingerprint Touch ID](/demos/fingerprint-touch-id/)
   - [Lava Effect](/demos/lava-effect/)
+  - [Messy Gallery](/demos/messy-gallery/)
   - [Particles Control](/demos/particles-control/)
   - [Rainbow Spider](/demos/rainbow-spider/)
   - [Simple Wave Effect](/demos/simple-wave-effect/)
