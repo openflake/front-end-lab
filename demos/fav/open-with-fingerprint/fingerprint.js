@@ -36,8 +36,8 @@ function fingerprint(callback) {
 
     // add events
     $fprint.addEventListener('mousedown', onTouchStart)
-    $fprint.addEventListener('mouseup', onTouchEnd)
-    document.addEventListener('touchstart', onTouchStart)
+    $fprint.addEventListener('touchstart', onTouchStart)
+    document.addEventListener('mouseup', onTouchEnd)
     document.addEventListener('touchend', onTouchEnd)
 
     function onTouchStart() {

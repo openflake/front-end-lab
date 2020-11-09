@@ -10,11 +10,17 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 .fingerprint {
   width: 200px;
   cursor: pointer;
+  tap-highlight-color: transparent;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .fingerprint.bg {
