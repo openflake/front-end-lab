@@ -5,11 +5,49 @@
   <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no"/>
   <meta name="description" content="A random and messy gallery"/>
   <meta name="author" content="Ai Chen"/>
-  <link rel="stylesheet" href="gallery.css"/>
-  <script src="gallery.js"></script>
   <title>Messy Gallery</title>
+  <style>
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    height: 100vh;
+    background: #eee;
+  }
+  .gallery {
+    position: relative;
+    width: 800px;
+    height: 500px;
+  }
+  .gallery a {
+    position: absolute;
+    max-width: 220px;
+    padding: 10px;
+    background: #fff;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+    transition: all .3s;
+  }
+  .gallery a img {
+    max-width: 100%;
+    max-height: 100%;
+    filter: grayscale(100%);
+    transition: all .3s;
+  }
+  .gallery a:hover {
+    z-index: 999;
+    transform: rotate(0deg) !important;
+  }
+  .gallery a:hover>img {
+    filter: initial;
+  }
+  </style>
 </head>
 <body>
+
 <div class="gallery">
   <a target="_blank" href="images/1.jpg"><img src="images/1.jpg"/></a>
   <a target="_blank" href="images/2.jpg"><img src="images/2.jpg"/></a>
@@ -17,5 +55,17 @@
   <a target="_blank" href="images/4.jpg"><img src="images/4.jpg"/></a>
   <a target="_blank" href="images/5.jpg"><img src="images/5.jpg"/></a>
 </div>
+
+<script>
+const gallery = document.querySelectorAll('.gallery a')
+gallery.forEach(item => {
+    item.style.transform = `rotate(${randomBetween(-30, 30)}deg)`
+    item.style.top = randomBetween(5, 60) + '%'
+    item.style.left = randomBetween(5, 65) + '%'
+})
+function randomBetween(n, m) {
+    return Math.round(Math.random() * (m - n + 1) + n)
+}
+</script>
 </body>
 </html>
