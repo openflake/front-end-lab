@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1"/>
+  <meta name="description" content="A customizable donut clock created on html5 canvas"/>
+  <title>Donut Clock</title>
+  <style>
+  body { display: flex; justify-content: center; align-items: center; margin: 0; height: 100vh; }
+  </style>
+</head>
+
+<body>
+<div id="container"></div>
+</body>
+</html>
+
+<script>
+class DonutClock {
+  constructor(selector, options) {
+    this.options = Object.assign({
+      size: 300,
+      donutWidth: 20,
+      donutSpacing: 10,
+      hourHandColor: '#44b549',
+      minuteHandColor: '#4688f4',
+      secondHandColor: '#db7093',
+      fontSize: '14px',
+      fontFamily: 'sans-serif',
+      showText: true
+    }, options)
+
+    const cvs = document.createElement('canvas')
+    cvs.width = this.options.size
+    cvs.height = this.options.size
+    document.querySelector(selector).appendChild(cvs)
+
+    this.ctx = cvs.getContext('2d')
+    this.ctx.lineWidth = this.options.donutWidth
+    this.ctx.font = `bold ${this.options.fontSize} ${this.options.fontFamily}`
+    this.ctx.textBaseline = 'middle'
+    this.ctx.textAlign = 'center'
+
+    this.startPos = 1.5 * Math.PI
+    this.endPos = 2 * Math.PI / 100
+    this.halfSize = this.options.size / 2
+    this.run()
+  }
+
+  run() {
+    requestAnimationFrame(() => this.run())
+    const date = new Date
+    let h = date.getHours()
+    let m = date.getMinutes()
+    let s = date.getSeconds()
+
+    // Calculate percentage to be drawn
+    var hp = 100 / 12 * (h % 12)
+    var mp = 100 / 60 * m
+    var sp = 100 / 60 * s
+
+    const opt = this.options
+    this.ctx.clearRect(0, 0, opt.size, opt.size)
+    this.draw(this.halfSize - opt.donutWidth, sp, opt.secondHandColor, s)
+    this.draw(this.halfSize - opt.donutWidth * 2 - opt.donutSpacing, mp, opt.minuteHandColor, m)
+    this.draw(this.halfSize - opt.donutWidth * 3 - opt.donutSpacing * 2, hp, opt.hourHandColor, h)
+  }
+
+  /**
+   * Draw canvas of a circle
+   *
+   * @param {number} r Radius
+   * @param {number} p Percentage of circle
+   * @param {string} c Stroke color
+   * @param {number} t Time text (hours or minutes or seconds)
+   * @return void
+   */
+  draw(r, p, c, t) {
+    /**
+     * Draw time bars
+     */
+    p = p || 100 // When time is '00' we show full circle
+    const o = { x: this.halfSize, y: this.halfSize }
+    this.ctx.strokeStyle = c
+    this.ctx.beginPath()
+    this.ctx.arc(o.x, o.y, r, this.startPos, p * this.endPos + this.startPos, false)
+    this.ctx.stroke()
+
+    /**
+     * Draw time text
+     *
+     * Formula to calculate the coordinate of a point on circle
+     * 'o' is the center of circle
+     * 'a' is the angle relative to the position of 3 o'clock
+     * x = o.x + radius * Math.cos(a * PI / 180)
+     * y = o.y + radius * Math.sin(a * PI / 180)
+     *
+     * Calculate the offset angle (avoid text being blocked by the time bar)
+     * Angle formula: arc length / perimeter = angle / 360
+     * so, angle = arc length * 360 / 2πr
+     * assign offset arc length = 10
+     */
+    if (this.options.showText === true) {
+      const angle = p / 100 * 360 - 90
+      const offsetAngle = 10 * (360 / (2 * Math.PI * r))
+      const x = o.x + r * Math.cos((angle + offsetAngle) * Math.PI / 180)
+      const y = o.y + r * Math.sin((angle + offsetAngle) * Math.PI / 180)
+      this.ctx.fillStyle = c
+      this.ctx.fillText(t, x, y)
+    }
+  }
+}
+
+new DonutClock('#container')
+</script>

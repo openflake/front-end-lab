@@ -1,24 +1,26 @@
-- Developments
-  - [Simple Wave Effect](/demos/dev/wave-effect/)
-  - [Starry Sky](/demos/dev/starry-sky/)
-  - [A Donut Clock](/demos/dev/donut-clock/)
-  - [A Experimental Single Page Blog](/demos/dev/single-page-blog/)
+- EFFECTS
+  - [Digital LED Clock](/demos/digital-led-clock/)
+  - [Donut Clock](/demos/donut-clock/)
+  - [Fingerprint Touch ID](/demos/fingerprint-touch-id/)
+  - [Lava Effect](/demos/lava-effect/)
+  - [Particles Control](/demos/particles-control/)
+  - [Rainbow Spider](/demos/rainbow-spider/)
+  - [Simple Wave Effect](/demos/simple-wave-effect/)
+  - [Simulated Train Lines](/demos/simulated-train-lines/)
+  - [Single Page Blog](/demos/single-page-blog/)
+  - [Snowflake Effect](/demos/snowflake-effect/)
+  - [Starry Sky](/demos/starry-sky/)
+  - [Swimming Particles](/demos/swimming-particles/)
 
-- Favorites
-  - [Open Screen with Fingerprint](/demos/fav/open-with-fingerprint/)
-  - [A Rainbow Spider Based on Physics Engine](/demos/fav/spider-web/)
-  - [Digital Block Clock](/demos/fav/digital-block-clock/)
-  - [Lava Effect](/demos/fav/lava-effect/)
-  - [Attract and Repulse Particles](/demos/fav/attract-and-repulse-particles/)
-  - [Upstream Lines](/demos/fav/upstream-lines/)
-  - [Simulated Train Line](/demos/fav/simulated-train-line/)
-  - [Simulated Snowflake](/demos/fav/simulated-snowflake/)
-  - [Flappy Trex on Chrome](/demos/fav/flappy-trex/)
-  - [Typing Game](/demos/fav/typing-game/)
+- GRAPHICS
 
-- 404 Pages
-  - [Lost in Galaxy](/demos/404/lost-in-galaxy/)
-  - [Lost in Island](/demos/404/lost-in-island/)
-  - [Lost in Particles](/demos/404/lost-in-particles/)
-  - [Lost in Word Puzzle](/demos/404/lost-in-word-puzzle/)
+- GAMES
+  - [Running T-Rex](/demos/running-t-rex/)
+  - [Typing War](/demos/typing-war/)
+
+- 404 PAGES
+  - [Lost in Galaxy](/demos/lost-in-galaxy/)
+  - [Lost in Island](/demos/lost-in-island/)
+  - [Lost in Particles](/demos/lost-in-particles/)
+  - [Lost in Word Puzzle](/demos/lost-in-word-puzzle/)
   - [Lost in Coding](/404.html)

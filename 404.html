@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no"/>
+  <meta name="description" content="You are lost in coding."/>
   <title>404 - Page Not Found</title>
   <link rel="icon" href="/assets/logo.png"/>
-  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11"></script>
+  <script src="//cdn.jsdelivr.net/npm/typed.js@2.0.11"></script>
   <style>
   @font-face {
     font-family: Officecode;
-    src: local('Officecode'), local('Officecode'), url(https://cdn.unpkg.net/font/officecode.woff2) format('woff2')
+    src: url(//cdn.unpkg.net/font/officecode.woff2) format('woff2');
   }
   body, pre {
     font: 16px/1.6 Officecode, Consolas, Monaco, monospace;
@@ -59,6 +60,7 @@ const coding = [
 }`]
 new Typed('#code', {
   typeSpeed: 20,
+  backSpeed: 50,
   startDelay: 1000,
   backDelay: 2000,
   strings: coding,

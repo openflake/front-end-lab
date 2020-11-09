@@ -54,6 +54,10 @@ nav {
   margin: 30px;
 }
 
+nav a.actived {
+  color: #de5246;
+}
+
 menu {
   position: fixed;
   z-index: 10;
@@ -136,6 +140,9 @@ li {
     z-index: 9;
     left: -300px;
     transition: left .3s;
+  }
+  aside.slide {
+    left: 0;
   }
   menu {
     display: flex;

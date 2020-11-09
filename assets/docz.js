@@ -8,12 +8,15 @@ document.addEventListener('DOMContentLoaded', function(e) {
     loader.className = 'loading'
     loader.src = '/assets/loader.svg'
 
-    menu.addEventListener('click', toggleSidebar)
-    fetch('/README.md').then(res => res.text()).then(res => {
-        main.innerHTML = marked(res)
+    loadDocument(location.hash.substr(1))
+    window.onpopstate = () => loadDocument(location.hash.substr(1))
+
+    menu.addEventListener('click', () => {
+        sidebar.classList.toggle('slide')
     })
     fetch('/SIDEBAR.md').then(res => res.text()).then(res => {
         nav.innerHTML = marked(res)
+        activeCurrentLink(location.hash.substr(1))
         addLinksClick()
     })
 
@@ -22,29 +25,47 @@ document.addEventListener('DOMContentLoaded', function(e) {
         links.forEach(link => {
             link.addEventListener('click', function(e) {
                 e.preventDefault()
-                toggleSidebar()
-                main.innerHTML = ''
-                main.appendChild(loader)
 
-                let url = this.getAttribute('href')
-                if (url.endsWith('/')) {
-                    url += 'index.html'
-                }
-                if (url.endsWith('.md')) {
-                    fetch(url).then(res => res.text()).then(res => {
-                        main.innerHTML = marked(res)
-                        main.classList.remove('with-frame')
-                    })
-                } else {
-                    const frame = createFrame()
-                    frame.src = url
-                    frame.onload = () => loader.remove()
-                }
+                const url = this.getAttribute('href')
+                loadDocument(url)
+                history.pushState(null, '', '#' + url)
+                sidebar.classList.toggle('slide')
             })
         })
     }
 
-    function createFrame() {
+    function loadDocument(url) {
+        activeCurrentLink(url)
+        main.innerHTML = ''
+        main.appendChild(loader)
+
+        if (!url || url === '/') {
+            url = '/README.md'
+        }
+        if (url.endsWith('.md')) {
+            fetch(url).then(res => res.text()).then(res => {
+                main.innerHTML = marked(res)
+                main.classList.remove('with-frame')
+            })
+        } else {
+            const frame = createFrameElement()
+            frame.src = url.endsWith('/') ? url + 'index.html' : url
+            frame.onload = () => loader.remove()
+        }
+    }
+
+    function activeCurrentLink(url) {
+        if (window.activedLink) {
+            window.activedLink.classList.remove('actived')
+        }
+        const link = nav.querySelector(`a[href="${url}"]`)
+        if (link) {
+            link.classList.add('actived')
+            window.activedLink = link
+        }
+    }
+
+    function createFrameElement() {
         let iframe = document.querySelector('iframe')
         if (!iframe) {
             iframe = document.createElement('iframe')
@@ -52,15 +73,5 @@ document.addEventListener('DOMContentLoaded', function(e) {
             main.appendChild(iframe)
         }
         return iframe
-    }
-
-    function toggleSidebar() {
-        if (sidebar.isOpen) {
-            sidebar.isOpen = false
-            sidebar.style.left = '-300px'
-        } else {
-            sidebar.isOpen = true
-            sidebar.style.left = 0
-        }
     }
 })
