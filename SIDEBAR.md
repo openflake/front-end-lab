@@ -13,6 +13,7 @@
   - [Snowflake Effect](/demos/snowflake-effect/)
   - [Starry Sky](/demos/starry-sky/)
   - [Swimming Particles](/demos/swimming-particles/)
+  - [Twitter Like Animation](/demos/twitter-like-animation/)
 
 - GRAPHICS
   - [Animated Icons](/demos/animated-icons/)
