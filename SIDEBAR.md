@@ -16,7 +16,7 @@
 
 - GRAPHICS
   - [Animated Icons](/demos/animated-icons/)
-  - [Animated Loadings](/demos/animated-loadings/)
+  - [Animated Loaders](/demos/animated-loaders/)
 
 - GAMES
   - [Running T-Rex](/demos/running-t-rex/)
