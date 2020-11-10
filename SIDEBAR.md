@@ -1,4 +1,5 @@
 - EFFECTS
+  - [Amazing-Rotating-Earth](/demos/amazing-rotating-earth/)
   - [Cosmic Particles](/demos/cosmic-particles/)
   - [Digital LED Clock](/demos/digital-led-clock/)
   - [Donut Clock](/demos/donut-clock/)
