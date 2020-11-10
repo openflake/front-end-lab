@@ -1,4 +1,5 @@
 - EFFECTS
+  - [Cosmic Particles](/demos/cosmic-particles/)
   - [Digital LED Clock](/demos/digital-led-clock/)
   - [Donut Clock](/demos/donut-clock/)
   - [Fingerprint Touch ID](/demos/fingerprint-touch-id/)
@@ -14,6 +15,8 @@
   - [Swimming Particles](/demos/swimming-particles/)
 
 - GRAPHICS
+  - [Animated Icons](/demos/animated-icons/)
+  - [Animated Loadings](/demos/animated-loadings/)
 
 - GAMES
   - [Running T-Rex](/demos/running-t-rex/)

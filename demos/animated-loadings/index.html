@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no"/>
+  <meta name="description" content="Some animated loadings collection"/>
+  <meta name="author" content="Ai Chen"/>
+  <title>Animated Loadings</title>
+  <style>
+  body {
+    margin: 0;
+    padding: 5%;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  section {
+    background: #eee;
+    width: 100px;
+    height: 100px;
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+  }
+  section img {
+    height: 32px;
+  }
+
+  /* rotating-rectangle */
+  .rotating-rectangle {
+    width: 40px;
+    height: 30px;
+    animation: rotate-rect 1.2s infinite, change-color 1.2s infinite;
+  }
+  @keyframes change-color {
+    0% {
+      background: #009ddc;
+    }
+    33% {
+      background: #50b949;
+    }
+    66% {
+      background: #ee2d24;
+    }
+    100% {
+      background: #feb825;
+    }
+  }
+  @keyframes rotate-rect {
+    0% {
+      transform: perspective(100px) rotateX(0deg) rotateY(0deg);
+    }
+    50% {
+      transform: perspective(100px) rotateX(-180deg) rotateY(0deg);
+    }
+    100% {
+      transform: perspective(100px) rotateX(-180deg) rotateY(-180deg);
+    }
+  }
+  </style>
+</head>
+
+<body>
+
+<section>
+  <img src="inflated-dots.svg"/>
+</section>
+
+<section>
+  <img src="mobile-loading.svg"/>
+</section>
+
+<section>
+  <div class="rotating-rectangle"></div>
+</section>
+
+</body>
+</html>
