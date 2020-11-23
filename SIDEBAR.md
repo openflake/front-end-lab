@@ -1,6 +1,7 @@
 - EFFECTS
   - [Amazing Rotating Earth](/demos/amazing-rotating-earth/)
   - [Cosmic Particles](/demos/cosmic-particles/)
+  - [Cutting Menu](/demos/cutting-menu/)
   - [Digital LED Clock](/demos/digital-led-clock/)
   - [Donut Clock](/demos/donut-clock/)
   - [Fingerprint Touch ID](/demos/fingerprint-touch-id/)

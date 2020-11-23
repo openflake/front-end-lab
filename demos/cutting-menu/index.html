@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no"/>
+  <meta name="description" content="Cutting text effect in pure CSS"/>
+  <title>Cutting Menu</title>
+  <style type="text/css">
+  body{
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .menu {
+    padding: 0;
+    width: 300px;
+  }
+  .menu li {
+    position: relative;
+    list-style-type: none;
+    cursor: pointer;
+    margin: 20px;
+    font-size: 2em;
+    font-weight: 700;
+    line-height: 1em;
+    text-align: center;
+    text-transform: uppercase;
+    border-top: 1px solid transparent;
+    transition: all .3s;
+  }
+  .menu li:hover {
+    border-top: #4688f4 1px solid;
+  }
+  .menu li::before, .menu li::after {
+    content: attr(data-text);
+    position: absolute;
+    top: -0.5em;
+    left: 0;
+    width: 100%;
+    color: #ccc;
+    transition: .3s ease-out;
+  }
+  .menu li::before {
+    clip-path: polygon(0 0,100% 0,100% 50%,0 50%);
+  }
+  .menu li::after {
+    clip-path: polygon(0 50%,100% 50%,100% 100%,0 100%);
+  }
+  .menu li:hover::before,
+  .menu li:hover::after {
+    color: #4688f4;
+    transition: left 0.3s ease-out;
+    transition-delay: 0.2s;
+  }
+  .menu li:nth-child(odd):hover::before,
+  .menu li:nth-child(even):hover::after {
+    left: -0.15em;
+  }
+  .menu li:nth-child(even):hover::before,
+  .menu li:nth-child(odd):hover::after {
+    left:0.15em;
+  }
+  </style>
+</head>
+<body>
+
+<ul class="menu">
+  <li data-text="News">&#160;</li>
+  <li data-text="Blog">&#160;</li>
+  <li data-text="Devlopment">&#160;</li>
+  <li data-text="About">&#160;</li>
+</ul>
+
+</body>
+</html>

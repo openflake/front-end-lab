@@ -58,6 +58,55 @@
       transform: perspective(100px) rotateX(-180deg) rotateY(-180deg);
     }
   }
+
+  /* rotating-circles */
+  .rotating-circles, .rotating-circles:before, .rotating-circles:after {
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 50%;
+    border-left-color:transparent;
+    border-right-color:transparent;
+  }
+  /* 外层圆弧 */
+  .rotating-circles {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 24px;
+    height: 24px;
+    border-top-color: #db3a2e;
+    border-bottom-color: #336503;
+    animation: rotate-circles 4s ease-in-out infinite alternate;
+  }
+  /* 中间层圆弧 */
+  .rotating-circles:before {
+    content: '';
+    position: absolute;
+    width: 60%;
+    height: 60%;
+    border-top-color: #f69833;
+    border-bottom-color: #599709;
+    animation: rotate-circles 8s ease-in-out infinite alternate;
+  }
+   /* 内层圆弧 */
+  .rotating-circles:after {
+    content: '';
+    position: absolute;
+    width: 20%;
+    height: 20%;
+    border-top-color: #fed52e;
+    border-bottom-color: #8dd313;
+    animation: rotate-circles 16s ease-in-out infinite alternate;
+  }
+  @keyframes rotate-circles {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(1440deg);
+    }
+  }
   </style>
 </head>
 
@@ -73,6 +122,10 @@
 
 <section>
   <div class="rotating-rectangle"></div>
+</section>
+
+<section>
+  <div class="rotating-circles"></div>
 </section>
 
 </body>
